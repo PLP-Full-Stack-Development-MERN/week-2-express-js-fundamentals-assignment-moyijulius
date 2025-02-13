@@ -1,93 +1,89 @@
-**Week 2: Express.js Fundamentals Assignment**
+# Express Assignment
 
-**Objective:**
+This is a RESTful API implementation using Express.js that provides endpoints for managing users and products.
 
-- Apply Express.js concepts learned throughout the week.
-- Develop hands-on experience with creating routes, middleware, and API endpoints.
-- Understand and implement RESTful APIs.
+## Setup Instructions
 
-**Instructions:**
+1. Clone the repository
+2. Install dependencies:
+```bash
+npm install
+```
+3. Create a `.env` file in the root directory and add:
+```
+PORT=3000
+NODE_ENV=development
+```
+4. Start the server:
+```bash
+node index.js
+```
 
-1. **Setup Express.js Project:**
+## API Endpoints
 
-   - Install Node.js using NVM.
-   - Create a new project folder named `express-assignment`.
-   - Initialize a Node.js project using:
-     ```sh
-     npm init -y
-     ```
-   - Install necessary dependencies:
-     ```sh
-     npm install express dotenv
-     ```
+### Users
 
-2. **Project Structure:**
+- GET `/api/users` - Get all users
+- GET `/api/users/:id` - Get user by ID
+- POST `/api/users` - Create new user
+  ```json
+  {
+    "name": "John Doe",
+    "email": "john@example.com"
+  }
+  ```
+- PUT `/api/users/:id` - Update user
+  ```json
+  {
+    "name": "John Updated",
+    "email": "john.updated@example.com"
+  }
+  ```
+- DELETE `/api/users/:id` - Delete user
 
-   - Organize your project files with a clear folder structure:
-     ```
-     express-assignment/
-     │-- routes/
-     │    ├── userRoutes.js
-     │    ├── productRoutes.js
-     │-- middleware/
-     │    ├── logger.js
-     │-- controllers/
-     │    ├── userController.js
-     │    ├── productController.js
-     │-- index.js
-     │-- package.json
-     │-- README.md
-     │-- .env
-     ```
+### Products
 
-3. **Create Routes:**
+- GET `/api/products` - Get all products
+- GET `/api/products/:id` - Get product by ID
+- POST `/api/products` - Create new product
+  ```json
+  {
+    "name": "Product Name",
+    "price": 99.99,
+    "description": "Product description"
+  }
+  ```
+- PUT `/api/products/:id` - Update product
+  ```json
+  {
+    "name": "Updated Product",
+    "price": 149.99,
+    "description": "Updated description"
+  }
+  ```
+- DELETE `/api/products/:id` - Delete product
 
-   - Create `userRoutes.js` and `productRoutes.js` inside the `routes/` folder.
-   - Implement RESTful routes for users and products (GET, POST, PUT, DELETE).
-   - Ensure proper usage of route parameters and query strings.
+## Testing
 
-4. **Implement Middleware:**
+You can test the API using Postman or cURL. Example cURL commands:
 
-   - Create a custom middleware function in `middleware/logger.js` to log request details (method, URL, timestamp).
-   - Apply middleware globally to all routes.
+```bash
+# Get all users
+curl http://localhost:3000/api/users
 
-5. **Develop Controllers:**
+# Create new user
+curl -X POST http://localhost:3000/api/users \
+  -H "Content-Type: application/json" \
+  -d '{"name": "John Doe", "email": "john@example.com"}'
+```
 
-   - Create controller functions in `controllers/userController.js` and `controllers/productController.js`.
-   - Implement business logic to handle requests and responses.
+## Error Handling
 
-6. **Environment Variables:**
+The API includes global error handling and logging. All errors are returned in a consistent format:
 
-   - Use `dotenv` to manage environment variables.
-   - Define variables such as `PORT` in the `.env` file and access them inside the application.
-
-7. **Error Handling:**
-
-   - Implement a global error-handling middleware to catch and respond to errors gracefully.
-
-8. **Testing:**
-
-   - Run the server using:
-     ```sh
-     node index.js
-     ```
-   - Test API endpoints using Postman or cURL.
-   - Verify routes, middleware functionality, and error handling.
-
-9. **Documentation:**
-
-   - Add a `README.md` with instructions on setting up and running the project.
-   - Document available API endpoints with descriptions and example requests.
-
-10. **Submission:**
-
-   - Push your code to your GitHub repository.
-
-**Evaluation Criteria:**
-
-- Correct implementation of Express routes and middleware.
-- Proper error handling and logging.
-- Clean project structure and code organization.
-- Detailed documentation with clear instructions.
-- Successful testing of all endpoints.
-
+```json
+{
+  "status": "error",
+  "message": "Error message here"
+}
+```
