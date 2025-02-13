@@ -28,15 +28,15 @@ node index.js
 - POST `/api/users` - Create new user
   ```json
   {
-    "name": "John Doe",
+    "name": "John Plimo",
     "email": "john@example.com"
   }
   ```
 - PUT `/api/users/:id` - Update user
   ```json
   {
-    "name": "John Updated",
-    "email": "john.updated@example.com"
+    "name": "John Alex",
+    "email": "john.alex@example.com"
   }
   ```
 - DELETE `/api/users/:id` - Delete user
@@ -48,24 +48,25 @@ node index.js
 - POST `/api/products` - Create new product
   ```json
   {
-    "name": "Product Name",
+    "name": "salt",
     "price": 99.99,
-    "description": "Product description"
+    "description": "menengai salt"
   }
   ```
 - PUT `/api/products/:id` - Update product
   ```json
   {
-    "name": "Updated Product",
+    "name": "Soap",
     "price": 149.99,
-    "description": "Updated description"
+    "description": "Lido"
   }
   ```
 - DELETE `/api/products/:id` - Delete product
 
 ## Testing
 
-You can test the API using Postman or cURL. Example cURL commands:
+You can test the API using Postman or cURL. Example cURL commands.Recommended postman
+
 
 ```bash
 # Get all users
@@ -74,7 +75,7 @@ curl http://localhost:3000/api/users
 # Create new user
 curl -X POST http://localhost:3000/api/users \
   -H "Content-Type: application/json" \
-  -d '{"name": "John Doe", "email": "john@example.com"}'
+  -d '{"name": "John Plimo", "email": "john@example.com"}'
 ```
 
 ## Error Handling
